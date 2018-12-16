@@ -23,7 +23,7 @@ class WC_Product_Wcpb extends WC_Product {
 	 * @return string [ price ]
 	 *
 	 */
-	public function get_price() {
+	public function get_price( $context = 'view' ) {
 		$price = 0;
 		$sprice = $this->get_sale_price();
 		if( $sprice && $sprice != "" ) {
@@ -55,7 +55,7 @@ class WC_Product_Wcpb extends WC_Product {
 	 * @return string [ _wcpb_product_sale_price ]
 	 *
 	 */
-	public function get_sale_price() {
+	public function get_sale_price( $context = 'view' ) {
 		$this->sale_price = get_post_meta( $this->id, '_wcpb_product_sale_price', true );
 		return $this->sale_price;
 	}
@@ -66,7 +66,7 @@ class WC_Product_Wcpb extends WC_Product {
 	 * @return string [ _wcpb_product_regular_price ]
 	 *
 	 */
-	public function get_regular_price() {
+	public function get_regular_price( $context = 'view' ) {
 		$bundles =  json_decode( get_post_meta( $this->id, "wcpb_bundle_products", true ), true );
 		if( is_array( $bundles ) ) {
 			foreach ( $bundles as $key => $value ) {
@@ -87,7 +87,7 @@ class WC_Product_Wcpb extends WC_Product {
 	 *
 	 * @return decimal
 	 */
-	public function get_weight() {
+	public function get_weight( $context = 'view' ) {
 		$weight = 0;		
 		if( parent::get_weight() ) {
 			$weight = parent::get_weight();

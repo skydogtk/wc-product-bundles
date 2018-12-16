@@ -37,7 +37,7 @@ class wc_product_bundles {
 	
 	function init() {	
 		if( is_admin() ) {
-			if( $_REQUEST["action"] == 'edit' || $_REQUEST["post_type"] == "product" ) {
+			if( (isset($_REQUEST['action']) && $_REQUEST['action'] == 'edit') || (isset($_REQUEST['post_type']) && $_REQUEST['post_type'] == 'product' )) {
 				wp_register_script( 'wcpb-script', $this->settings['dir'] . "assets/js/wcpb.js", 'jquery', $this->settings['version'] );
 				wp_register_style( 'wcpb-style', $this->settings['dir'] . 'assets/css/wcpb-admin.css' );
 				wp_enqueue_style( 'wcpb-style' );
