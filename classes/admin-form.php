@@ -26,7 +26,7 @@ class wcpb_product_interface {
 		$tabs['wcpb'] = array (
 			'label'  => __( 'Products Bundled', 'wc-product-bundles' ),
 			'target' => 'wcpb_data',
-			'class'  => array( 'hide_if_virtual', 'hide_if_grouped', 'hide_if_external', 'hide_if_simple', 'hide_if_variable', 'show_if_wcpb' ),
+			'class'  => array( 'hide_if_grouped', 'hide_if_external', 'hide_if_simple', 'hide_if_variable', 'show_if_wcpb' ),
 		);
 		return $tabs;
 	}
@@ -34,7 +34,7 @@ class wcpb_product_interface {
 	function wcpb_add_bundle_pricing_fields() {
 		global $post;
 		
-		echo '<div class="options_group pricing hide_if_virtual hide_if_grouped hide_if_external hide_if_simple hide_if_variable show_if_wcpb">';
+		echo '<div class="options_group pricing hide_if_grouped hide_if_external hide_if_simple hide_if_variable show_if_wcpb">';
 	
 		$sprice = wcpb_utils::get_wcpb_meta( $post->ID, '_wcpb_product_sale_price' );		
 		woocommerce_wp_text_input( array( 'id' => '_wcpb_product_sale_price', 'value' => esc_html( $sprice ), 'data_type' => 'price', 'label' => __( 'Bundle Price', 'wc-product-bundles' ) . ' ('.get_woocommerce_currency_symbol().')', 'desc_tip' => 'true', 'description' => __( 'Enter your discounted price for this bundle, otherwise the price will be the sum of included products.', 'wc-product-bundles' ) ) );
@@ -43,7 +43,7 @@ class wcpb_product_interface {
 		
 		echo '</div>';
 		
-		echo '<div class="options_group pricing hide_if_virtual hide_if_grouped hide_if_external hide_if_simple hide_if_variable show_if_wcpb">';
+		echo '<div class="options_group pricing hide_if_grouped hide_if_external hide_if_simple hide_if_variable show_if_wcpb">';
 				
 		$on_product = wcpb_utils::get_wcpb_meta( $post->ID, '_wcpb_show_bundle_on_product', 'yes' );
 		$on_cart = wcpb_utils::get_wcpb_meta( $post->ID, '_wcpb_show_bundle_on_cart', 'yes' );
@@ -57,7 +57,7 @@ class wcpb_product_interface {
 	}
 	
 	function wcpb_add_product_bundle_tab_panel() { ?>		
-		<div id="wcpb_data" class="panel woocommerce_options_panel hide_if_virtual hide_if_grouped hide_if_external hide_if_simple hide_if_variable show_if_wc_bundled_product">					
+		<div id="wcpb_data" class="panel woocommerce_options_panel hide_if_grouped hide_if_external hide_if_simple hide_if_variable show_if_wc_bundled_product">					
 			<ul class="wcpb-product-search-container-ul wc-metaboxes-wrapper">  
 				<li>
 					<div class="wcpb-product-search-txt-wrapper">
